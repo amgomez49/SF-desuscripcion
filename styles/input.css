@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-montserrat: "Montserrat", sans-serif;
+  --animate-slideIn: slideIn 0.5s ease-in-out forwards;
+  @keyframes slideIn {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+}
+
+:root {
+  --vh: 100%;
+}
+
+@media (min-height: 1200px) {
+  :root {
+    --vh: 150%;
+  }
+}
+
+@media (min-height: 2000px) {
+  :root {
+    --vh: 225%;
+  }
+}
+@layer base {
+  * {
+    @apply box-border antialiased font-montserrat;
+  }
+  html,
+  body {
+    @apply h-full overflow-hidden;
+  }
+  @media (min-width: 768px) and (orientation: landscape) {
+    html {
+      @apply text-[clamp(0.6875rem,1.9vh,var(--vh))];
+    }
+  }
+}
+@layer utilities {
+  .scrollbar {
+    @apply [scrollbar-width:thin] [scrollbar-color:_#58a333_white];
+  }
+}
