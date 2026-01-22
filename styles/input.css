@@ -46,4 +46,7 @@
   .scrollbar {
     @apply [scrollbar-width:thin] [scrollbar-color:_#58a333_white];
   }
+  .button {
+    @apply bg-[#58A333] text-white hover:bg-white hover:text-[#58A333] border border-transparent hover:border-current mt-4 w-full p-5 font-bold text-lg leading-[1] cursor-pointer transition-colors duration-300 ease-in-out rounded-[0.375rem] flex items-center justify-center disabled:pointer-events-none;
+  }
 }
