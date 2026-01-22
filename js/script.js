@@ -132,10 +132,31 @@ class UnsubscribeForm {
   }
 
   // ============================================================
+  // Checkbox Selection
+  // ============================================================
+  handleCheckboxChange(changedCheckbox) {
+    // Desmarcar todos los demás checkboxes cuando se selecciona uno
+    this.checkboxes.forEach((checkboxContainer) => {
+      const checkbox = checkboxContainer.querySelector("input[type='checkbox']");
+      if (checkbox && checkbox !== changedCheckbox) {
+        checkbox.checked = false;
+      }
+    });
+  }
+
+  // ============================================================
   // Events
   // ============================================================
   bindEvents() {
     this.form.addEventListener("submit", (e) => this.handleSubmit(e));
+    
+    // Agregar event listeners para checkboxes
+    this.checkboxes.forEach((checkboxContainer) => {
+      const checkbox = checkboxContainer.querySelector("input[type='checkbox']");
+      if (checkbox) {
+        checkbox.addEventListener("change", () => this.handleCheckboxChange(checkbox));
+      }
+    });
   }
 
   async handleSubmit(e) {
@@ -154,7 +175,7 @@ class UnsubscribeForm {
       message = {
         title: "Desuscripción confirmada",
         description:
-          "Tu correo fue eliminado correctamente de nuestra lista. Ya no recibirás más comunicaciones.",
+          "Tu correo fue eliminado correctamente de nuestra lista.</br>Ya no recibirás más comunicaciones.",
         icon: "unsubscribe-success",
       };
 
